@@ -161,28 +161,33 @@
         const systemC = document.getElementById('systemC').checked ? 'ระบบ C' : '';
         const systemD = document.getElementById('systemD').checked ? 'ระบบ D' : '';
         const bothAB = document.getElementById('bothAB').checked ? 'ทั้งข้อ ก และ ข' : '';
-        
+
+        // Check if all required inputs are selected
+        const isDateAndTimeFilled = date !== '' && time !== '';
+        const isAnySystemChecked = document.querySelector('.tool input[type="checkbox"]:checked') !== null;
+
+        if (!isDateAndTimeFilled || !isAnySystemChecked) {
+            document.getElementById('result-content').innerHTML = '';
+            document.getElementById('question3').classList.add('hidden');
+            document.getElementById('question3-2').classList.add('hidden');
+            document.getElementById('question3-3').classList.add('hidden');
+            document.getElementById('section-divider').classList.add('hidden');
+            return;
+        }
+
         // Determine result content
         let resultContent = `
             <p>1. ระบุวันที่และเวลา: ${date} ${time}</p>
-            <p>2. เหตุการณ์ที่เกิดขึ้น(อาจ)ส่งผลกระทบต่อบริการ:</p>
-            <ul>
-                ${systemA ? `<li>${systemA}</li>` : ''}
-                ${systemB ? `<li>${systemB}</li>` : ''}
-                ${systemC ? `<li>${systemC}</li>` : ''}
-                ${systemD ? `<li>${systemD}</li>` : ''}
-                ${bothAB ? `<li>${bothAB}</li>` : ''}
-            </ul>
+            <p>2. เหตุการณ์ที่เกิดขึ้น(อาจ)ส่งผลกระทบต่อบริการ: ${[systemA, systemB, systemC, systemD, bothAB].filter(Boolean).join(', ')}</p>
         `;
 
-        // Show or hide question 3 based on selections
         const question3 = document.getElementById('question3');
         const question3_2 = document.getElementById('question3-2');
         const question3_3 = document.getElementById('question3-3');
         const sectionDivider = document.getElementById('section-divider');
 
         if (document.getElementById('systemD').checked && !document.getElementById('systemA').checked && !document.getElementById('systemB').checked && !document.getElementById('systemC').checked) {
-            resultContent += `<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a></p>`;
+            resultContent += `<p>ไม่เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a></p>`;
             question3.classList.add('hidden');
             sectionDivider.classList.remove('hidden');
             disableInputs(true);
@@ -236,14 +241,16 @@
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
             } else {
-                resultContent += `<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ดำเนินการต่อไปตาม Difficulties <a href="#">แสดงข้อมูลเพิ่มเติม</a>. นอกจากนี้ ให้พิจารณาหากต้องดำเนินการแจ้งเปลี่ยนแปลงการให้บริการ</p>`;
+                resultContent += `<p>ไม่เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ดำเนินการต่อไปตาม Difficulties <a href="#">แสดงข้อมูลเพิ่มเติม</a>. นอกจากนี้ ให้พิจารณาหากต้องดำเนินการแจ้งเปลี่ยนแปลงการให้บริการ</p>`;
                 sectionDivider.classList.remove('hidden');
                 disableInputs(false);
             }
         }
 
-        // Display the result content
-        document.getElementById('result-content').innerHTML = resultContent;
+        // Display the result content only if questions 1 and 2 are completed
+        if (isDateAndTimeFilled && isAnySystemChecked) {
+            document.getElementById('result-content').innerHTML = resultContent;
+        }
     }
 
     function showMoreInfo() {
