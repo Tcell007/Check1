@@ -126,11 +126,11 @@
             </div>
         </div>
         <div class="question">
-            <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ</h2>
+            <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ (เลือกได้มากกว่า 1 ข้อ)</h2>
             <label><input type="checkbox" id="systemA" onchange="updateResult()" /> ก. ระบบ Communication</label>
             <label><input type="checkbox" id="systemB" onchange="updateResult()" /> ข. ระบบ Navigation</label>
             <label><input type="checkbox" id="systemC" onchange="updateResult()" /> ค. ระบบ Surveillance</label>
-            <label><input type="checkbox" id="systemD" onchange="updateResult()" /> ง. ระบบ Support & Facilities</label>
+            <label><input type="checkbox" id="systemD" onchange="updateResult()" /> ง. ระบบ Support&Facilities</label>
             <label><input type="checkbox" id="bothAB" onchange="updateResult()" /> จ. ข้อ ง. และ ก./ข. หรือ ค.</label>
         </div>
         <div class="question hidden" id="question3">
@@ -173,11 +173,11 @@
         // Get the values from the inputs
         const date = document.getElementById('date').value;
         const time = document.getElementById('time').value;
-        const systemA = document.getElementById('systemA').checked ? 'ระบบ A' : '';
-        const systemB = document.getElementById('systemB').checked ? 'ระบบ B' : '';
-        const systemC = document.getElementById('systemC').checked ? 'ระบบ C' : '';
-        const systemD = document.getElementById('systemD').checked ? 'ระบบ D' : '';
-        const bothAB = document.getElementById('bothAB').checked ? 'ทั้งข้อ ก และ ข' : '';
+        const systemA = document.getElementById('systemA').checked ? 'ระบบ Communication' : '';
+        const systemB = document.getElementById('systemB').checked ? 'ระบบ Navigation' : '';
+        const systemC = document.getElementById('systemC').checked ? 'ระบบ Surveillance' : '';
+        const systemD = document.getElementById('systemD').checked ? 'ระบบ Support&Facilities' : '';
+        const bothAB = document.getElementById('bothAB').checked ? 'Support&Facilities และระบบ C หรือ N หรือ S' : '';
 
         // Check if all required inputs are selected
         const isDateAndTimeFilled = date !== '' && time !== '';
