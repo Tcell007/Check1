@@ -222,7 +222,7 @@
 			<p>3.1 ผลพิจารณาลักษณะเหตุตามตาราง Mandatory ของแนวปฏิบัติฯ พบว่า  : ${q3_1_value.value}</p>`;
             if (q3_1_value.value === "ใช่") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
-				<p>เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
+				<p>เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อดำเนินการต่อไป <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 question3_2.classList.add('hidden');
                 question3_3.classList.add('hidden');
                 sectionDivider.classList.remove('hidden');
@@ -242,7 +242,7 @@
             resultContent += `<p>3.2 เมื่อพิจารณาเหตุการณ์นี้ ตามคำจำกัดความว่า เป็น "เหตุที่ระบบ/อุปกรณ์ขัดข้องโดยทันที ไม่ได้วางแผน และ ส่งผลให้บริการหยุดชะงักหรือขาดหายไป" พบว่า : ${q3_2_value.value}</p>`;
             if (q3_2_value.value === "ใช่" || q3_2_value.value === "ยังไม่ทราบ/ไม่แน่ใจ") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2> 
-				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
+				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อดำเนินการต่อไป <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 question3_3.classList.add('hidden');
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
@@ -259,7 +259,7 @@
             resultContent += `<p>3.3 เหตุการณ์นี้มีลักษณะตามกลุ่มนี้ ข้อใด ข้อหนึ่งหรือไม่: ${q3_3_value.value}</p>`;
             if (q3_3_value.value === "ใช่") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
-				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
+				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อดำเนินการต่อไป <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
             } else {
