@@ -195,7 +195,7 @@
         // Determine result content
         let resultContent = `
             <p>1. เหตุการณ์ เมื่อวันที่ : ${date}  เวลา : ${time}</p>
-            <p>2.  เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: ${[systemA, systemB, systemC, systemD, bothAB].filter(Boolean).join(', ')}</p>
+            <p>2. เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: ${[systemA, systemB, systemC, systemD, bothAB].filter(Boolean).join(', ')}</p>
         `;
 
         const question3 = document.getElementById('question3');
@@ -239,7 +239,7 @@
         // Update results for question 3.2
         const q3_2_value = document.querySelector('input[name="q3-2"]:checked');
         if (q3_2_value) {
-            resultContent += `<p>3.2 ผลพิจารณาเหตุนี้ เป็น "เหตุที่ระบบ/อุปกรณ์ขัดข้องโดยทันที ไม่ได้วางแผน และ ส่งผลให้บริการหยุดชะงักหรือขาดหายไป" พบว่า : ${q3_2_value.value}</p>`;
+            resultContent += `<p>3.2 เมื่อพิจารณาเหตุการณ์นี้ ตามคำจำกัดความว่า เป็น "เหตุที่ระบบ/อุปกรณ์ขัดข้องโดยทันที ไม่ได้วางแผน และ ส่งผลให้บริการหยุดชะงักหรือขาดหายไป" พบว่า : ${q3_2_value.value}</p>`;
             if (q3_2_value.value === "ใช่" || q3_2_value.value === "ยังไม่ทราบ/ไม่แน่ใจ") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2> 
 				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
