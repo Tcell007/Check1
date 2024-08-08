@@ -123,17 +123,17 @@
             <h2>กรุณาพิจารณาและตอบคำถาม</h2>
 			<h2>1. ระบุวันที่และเวลา</h2>
             <div class="date-time-input">
-                <input type="date" id="date" oninput="updateResult()" />
+                <input type="date" id="date" oninput="updateResult()" max=""/>
                 <input type="time" id="time" oninput="updateResult()" />
             </div>
         </div>
         <div class="question">
             <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ (เลือกได้มากกว่า 1 ข้อ)</h2>
-            <label><input type="checkbox" id="systemA" onchange="updateResult()" /> ก. ระบบ Communication</label>
-            <label><input type="checkbox" id="systemB" onchange="updateResult()" /> ข. ระบบ Navigation</label>
-            <label><input type="checkbox" id="systemC" onchange="updateResult()" /> ค. ระบบ Surveillance</label>
-            <label><input type="checkbox" id="systemD" onchange="updateResult()" /> ง. ระบบ Support&Facilities</label>
-            <label><input type="checkbox" id="bothAB" onchange="updateResult()" /> จ. ข้อ ง. และ ก.หรือ ข.หรือ ค.</label>
+            <label><input type="checkbox" id="systemA" onchange="handleCheckboxChange()" /> ก. ระบบ Communication</label>
+            <label><input type="checkbox" id="systemB" onchange="handleCheckboxChange()" /> ข. ระบบ Navigation</label>
+            <label><input type="checkbox" id="systemC" onchange="handleCheckboxChange()" /> ค. ระบบ Surveillance</label>
+            <label><input type="checkbox" id="systemD" onchange="handleCheckboxChange()" /> ง. ระบบ Support&Facilities</label>
+            <label><input type="checkbox" id="bothAB" onchange="handleCheckboxChange()" /> จ. ข้อ ง. และ ก.หรือ ข.หรือ ค.</label>
         </div>
         <div class="question hidden" id="question3">
             <h2>3. บริการที่ขัดข้องเป็นบริการระบบ CNS ซึ่ง</h2>
@@ -319,7 +319,25 @@
         });
     }
 
-    function resetForm() {
+    function handleCheckboxChange() {
+        const bothABCheckbox = document.getElementById('bothAB');
+        const checkboxes = document.querySelectorAll('.tool input[type="checkbox"]:not(#bothAB)');
+        if (bothABCheckbox.checked) {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = true;
+                checkbox.parentElement.classList.add('disabled');
+            });
+        } else {
+            checkboxes.forEach(checkbox => {
+                checkbox.disabled = false;
+                checkbox.parentElement.classList.remove('disabled');
+            });
+        }
+        updateResult();
+    }
+	
+	function resetForm() {
         document.getElementById('date').value = '';
         document.getElementById('time').value = '';
         document.getElementById('systemA').checked = false;
@@ -341,6 +359,9 @@
         // Enable all inputs
         disableInputs(false);
     }
+	
+	// Set the max date to today
+    document.getElementById('date').max = new Date().toISOString().split('T')[0];
 </script>
 
 </body>
