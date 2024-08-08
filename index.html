@@ -136,7 +136,7 @@
         <div class="question hidden" id="question3">
             <h2>3. บริการที่ขัดข้องเป็นบริการระบบ CNS ซึ่ง</h2>
             <div class="question">
-                <h2>3.1 พิจารณาลักษณะเหตุตามตาราง Mandatory แล้ว <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a> และพบว่า เป็นเหตุการณ์ตามตารางที่กำหนด</h2>
+                <h2>3.1 พิจารณาลักษณะเหตุตามตาราง Mandatory แล้ว <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a> และพบว่า เป็นเหตุการณ์ตามตารางที่กำหนด</h2>
                 <label><input type="radio" name="q3-1" value="ใช่" onchange="updateResult()" /> ก. ใช่</label>
                 <label><input type="radio" name="q3-1" value="ไม่ใช่/ไม่ค่อยตรง" onchange="updateResult()" /> ข. ไม่ใช่/ไม่ค่อยตรง</label>
             </div>
@@ -205,7 +205,7 @@
 
         if (document.getElementById('systemD').checked && !document.getElementById('systemA').checked && !document.getElementById('systemB').checked && !document.getElementById('systemC').checked) {
             resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
-			<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a></p>`;
+			<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
             question3.classList.add('hidden');
             sectionDivider.classList.remove('hidden');
             disableInputs(true);
@@ -222,7 +222,7 @@
 			<p>3.1 ผลพิจารณาลักษณะเหตุตามตาราง Mandatory ของแนวปฏิบัติฯ พบว่า  : ${q3_1_value.value}</p>`;
             if (q3_1_value.value === "ใช่") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
-				<p>เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
+				<p>เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 question3_2.classList.add('hidden');
                 question3_3.classList.add('hidden');
                 sectionDivider.classList.remove('hidden');
@@ -242,7 +242,7 @@
             resultContent += `<p>3.2 เมื่อพิจารณาเหตุการณ์นี้ ตามคำจำกัดความว่า เป็น "เหตุที่ระบบ/อุปกรณ์ขัดข้องโดยทันที ไม่ได้วางแผน และ ส่งผลให้บริการหยุดชะงักหรือขาดหายไป" พบว่า : ${q3_2_value.value}</p>`;
             if (q3_2_value.value === "ใช่" || q3_2_value.value === "ยังไม่ทราบ/ไม่แน่ใจ") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2> 
-				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
+				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 question3_3.classList.add('hidden');
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
@@ -259,12 +259,12 @@
             resultContent += `<p>3.3 เหตุการณ์นี้มีลักษณะตามกลุ่มนี้ ข้อใด ข้อหนึ่งหรือไม่: ${q3_3_value.value}</p>`;
             if (q3_3_value.value === "ใช่") {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
-				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
+				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
             } else {
                 resultContent += `<h2>สิ้นสุดการพิจารณา </h2> 
-				<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#">แสดงข้อมูลเพิ่มเติม</a> </p> <h3> นอกจากนี้ ให้พิจารณาหากต้องดำเนินการแจ้งเปลี่ยนแปลงการให้บริการ</h3>`;
+				<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a> </p> <h3> นอกจากนี้ ให้พิจารณาหากต้องดำเนินการแจ้งเปลี่ยนแปลงการให้บริการ</h3>`;
                 sectionDivider.classList.remove('hidden');
                 disableInputs(false);
             }
@@ -276,8 +276,33 @@
         }
     }
 
-    function showMoreInfo() {
-        alert("แสดงข้อมูลเพิ่มเติมเกี่ยวกับการพิจารณาลักษณะเหตุตามตาราง Mandatory");
+    function showMoreInfo(event) {
+        event.preventDefault();
+        const resultContent = `
+            <div>
+                <button class="back-button" onclick="goBack()">ย้อนกลับ</button>
+				<p></p>
+				<p>ลักษณะเหตุตามตาราง Mandatory</p>
+				<a href="https://drive.google.com/file/d/10i7gwzpk2vSmrfNSgBRtd6VHaXzJlZSp/view?usp=sharing" target="_blank">
+			<img src="https://drive.google.com/thumbnail?id=10i7gwzpk2vSmrfNSgBRtd6VHaXzJlZSp" alt="Google Drive Image">
+</a>
+<p></p>
+				<p>ขั้นตอนดำเนินการตาม Difficulties</p>
+				<a href="https://drive.google.com/file/d/10i7gwzpk2vSmrfNSgBRtd6VHaXzJlZSp/view?usp=sharing" target="_blank">
+			<img src="https://drive.google.com/thumbnail?id=10i7gwzpk2vSmrfNSgBRtd6VHaXzJlZSp" alt="Google Drive Image">
+</a>
+				<p>ขั้นตอนดำเนินการตาม Mandatory</p>
+				<a href="https://drive.google.com/file/d/10i7gwzpk2vSmrfNSgBRtd6VHaXzJlZSp/view?usp=sharing" target="_blank">
+			<img src="https://drive.google.com/thumbnail?id=10i7gwzpk2vSmrfNSgBRtd6VHaXzJlZSp" alt="Google Drive Image">
+</a>
+                
+            </div>
+        `;
+        document.getElementById('result-content').innerHTML = resultContent;
+    }
+
+    function goBack() {
+        updateResult();
     }
 
     function disableInputs(disable) {
