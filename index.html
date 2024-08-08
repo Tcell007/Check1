@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Tool</title>
+    <title>Tool สำหรับพิจารณาเหตุการณ์ด้านความปลอดภัยภาคบังคับ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,8 +42,13 @@
         }
         h2 {
             font-size: 16px;
-            font-weight: normal;
-            color: #555;
+            font-weight: bold;
+            color: #0017e8;
+        }
+		h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
         }
         .question {
             background-color: #fafafa;
@@ -99,17 +104,29 @@
 
 <div class="container">
     <div class="tool">
-        <h1>พิจารณา</h1>
+        <h1>การพิจารณาเหตุการณ์ด้านความปลอดภัยภาคบังคับ</h1>
+         <h3>ก. วัตถุประสงค์สำหรับเครื่องมือนี้</h3>
+                    <ol>
+						<li>เพื่อเป็นเครื่องมือสำหรับ Assistant Safety Manager หรือ ผู้เกี่ยวข้อง ทำการวิเคราะห์หรือตีความเหตุขัดข้องที่เกิดขึ้นว่า เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับหรือไม่</li>
+                        <li>เพื่อให้ทราบแนวทางการดำเนินการต่อไปเบื้องต้น สำหรับเหตุการณ์นั้น ๆ</li>
+					</ol>
+		<h3>ข. การใช้งาน</h3>
+                    <ol>
+                        <li>กรุณาตอบข้อคำถามทีละข้อ โดยเครื่องมือจะสิ้นสุดการทำงานทันที หากมีผลพิจารณาว่า เป็นเหตุการณ์ด้านความปลอดภัยบังคับ หรือ ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ และขอให้ดำเนินการตามข้อแนะนำต่อไป</li>
+                        <li>ข้อคำถามที่มีระบุว่า "แสดงข้อมูลเพิ่มเติม" สามารถกดคลิกเลือกเพื่อดูรายละเอียดที่เกี่ยวข้องในส่วนการแสดงผล</li>
+                        <li>หากพบข้อขัดข้อง หรือมีข้อสงสัยสามารถสอบได้ที่ คป.</li>
+                    </ol>			
         <button class="reset-button" onclick="resetForm()">Reset</button>
         <div class="question">
-            <h2>1. ระบุวันที่และเวลา</h2>
+            <h2>กรุณาพิจารณาและตอบคำถาม</h2>
+			<h2>1. ระบุวันที่และเวลา</h2>
             <div class="date-time-input">
                 <input type="date" id="date" oninput="updateResult()" />
                 <input type="time" id="time" oninput="updateResult()" />
             </div>
         </div>
         <div class="question">
-            <h2>2. เหตุการณ์ที่เกิดขึ้น(อาจ)ส่งผลกระทบต่อบริการ</h2>
+            <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ</h2>
             <label><input type="checkbox" id="systemA" onchange="updateResult()" /> ระบบ A</label>
             <label><input type="checkbox" id="systemB" onchange="updateResult()" /> ระบบ B</label>
             <label><input type="checkbox" id="systemC" onchange="updateResult()" /> ระบบ C</label>
@@ -131,12 +148,12 @@
             </div>
             <div class="question hidden" id="question3-3">
                 <h2>3.3 เหตุการณ์นี้มีลักษณะตามกลุ่มนี้ ข้อใด ข้อหนึ่งหรือไม่</h2>
-                <ul>
-                    <li>ก. เหตุการณ์นี้เกิดขึ้นซ้ำในลักษณะเดิม โดยเสียหรือขัดข้อง ติดๆดับๆ ซึ่งอาจมีสาเหตุหลักหรือย่อยคล้ายเดิม รวมถึง ยังหาสาเหตุไม่พบ</li>
-                    <li>ข. ส่งผลกระทบต่อผู้รับบริการภายนอกหรือไม่</li>
-                    <li>ค. ส่งผลกระทบต่อ ATC และอาจทำให้เกิดอุบัติการณ์รุนแรง</li>
-                    <li>ง. เป็นเหตุการณ์ที่พิจารณาแล้วว่า ควรนำส่งรายงานแก่ฝ่ายบริหาร</li>
-                </ul>
+                <ol>
+                    <li>เหตุการณ์นี้เกิดขึ้นซ้ำในลักษณะเดิม อาการเสียหรือขัดข้อง ติดๆดับๆ ซึ่งอาจมีสาเหตุหลักหรือย่อยคล้ายเดิม รวมถึง ยังหาสาเหตุไม่พบ</li>
+                    <li>ส่งผลกระทบต่อผู้รับบริการภายนอกหรือไม่</li>
+                    <li>ส่งผลกระทบต่อ ATC และอาจทำให้เกิดอุบัติการณ์รุนแรง</li>
+                    <li>เป็นเหตุการณ์ที่พิจารณาแล้วว่า ควรนำส่งรายงานแก่ฝ่ายบริหาร</li>
+                </ol>
                 <label><input type="radio" name="q3-3" value="ใช่" onchange="updateResult()" /> ใช่</label>
                 <label><input type="radio" name="q3-3" value="ไม่ใช่" onchange="updateResult()" /> ไม่ใช่</label>
             </div>
@@ -144,7 +161,7 @@
         <div class="section-divider hidden" id="section-divider"></div>
     </div>
     <div class="result">
-        <h1>แสดงผล</h1>
+        <h1>ส่วนแสดงผลการพิจารณา</h1>
         <div id="result-content">
             <!-- Results will be displayed here -->
         </div>
@@ -177,8 +194,8 @@
 
         // Determine result content
         let resultContent = `
-            <p>1. ระบุวันที่และเวลา: ${date} ${time}</p>
-            <p>2. เหตุการณ์ที่เกิดขึ้น(อาจ)ส่งผลกระทบต่อบริการ: ${[systemA, systemB, systemC, systemD, bothAB].filter(Boolean).join(', ')}</p>
+            <p>1. เหตุการณ์ เมื่อวันที่ : ${date}  เวลา : ${time}</p>
+            <p>2.  เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: ${[systemA, systemB, systemC, systemD, bothAB].filter(Boolean).join(', ')}</p>
         `;
 
         const question3 = document.getElementById('question3');
@@ -187,7 +204,8 @@
         const sectionDivider = document.getElementById('section-divider');
 
         if (document.getElementById('systemD').checked && !document.getElementById('systemA').checked && !document.getElementById('systemB').checked && !document.getElementById('systemC').checked) {
-            resultContent += `<p>ไม่เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a></p>`;
+            resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
+			<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a></p>`;
             question3.classList.add('hidden');
             sectionDivider.classList.remove('hidden');
             disableInputs(true);
@@ -200,9 +218,11 @@
         // Update results for question 3.1
         const q3_1_value = document.querySelector('input[name="q3-1"]:checked');
         if (q3_1_value) {
-            resultContent += `<p>3.1 พิจารณาลักษณะเหตุตามตาราง Mandatory แล้ว <a href="#" onclick="showMoreInfo()">แสดงข้อมูลเพิ่มเติม</a> และพบว่า เป็นเหตุการณ์ตามตารางที่กำหนด: ${q3_1_value.value}</p>`;
+            resultContent += `<h3>3. บริการที่ขัดข้องเป็นบริการระบบ CNS ซึ่ง </h3>
+			<p>3.1 ผลพิจารณาลักษณะเหตุตามตาราง Mandatory ของแนวปฏิบัติฯ พบว่า  : ${q3_1_value.value}</p>`;
             if (q3_1_value.value === "ใช่") {
-                resultContent += `<p>เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
+                resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
+				<p>เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 question3_2.classList.add('hidden');
                 question3_3.classList.add('hidden');
                 sectionDivider.classList.remove('hidden');
@@ -219,9 +239,10 @@
         // Update results for question 3.2
         const q3_2_value = document.querySelector('input[name="q3-2"]:checked');
         if (q3_2_value) {
-            resultContent += `<p>3.2 เกิดจาก "เหตุที่ระบบ/อุปกรณ์ขัดข้องโดยทันที ไม่ได้วางแผน และ ส่งผลให้บริการหยุดชะงักหรือขาดหายไป": ${q3_2_value.value}</p>`;
+            resultContent += `<p>3.2 ผลพิจารณาเหตุนี้ เป็น "เหตุที่ระบบ/อุปกรณ์ขัดข้องโดยทันที ไม่ได้วางแผน และ ส่งผลให้บริการหยุดชะงักหรือขาดหายไป" พบว่า : ${q3_2_value.value}</p>`;
             if (q3_2_value.value === "ใช่" || q3_2_value.value === "ยังไม่ทราบ/ไม่แน่ใจ") {
-                resultContent += `<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
+                resultContent += `<h2>สิ้นสุดการพิจารณา </h2> 
+				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 question3_3.classList.add('hidden');
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
@@ -237,11 +258,13 @@
         if (q3_3_value) {
             resultContent += `<p>3.3 เหตุการณ์นี้มีลักษณะตามกลุ่มนี้ ข้อใด ข้อหนึ่งหรือไม่: ${q3_3_value.value}</p>`;
             if (q3_3_value.value === "ใช่") {
-                resultContent += `<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
+                resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
+				<p>(อาจ)เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ ให้ประสานงาน คป.มป. และงานวิชาการ เพื่อ <a href="#">แสดงข้อมูลเพิ่มเติม</a></p>`;
                 sectionDivider.classList.remove('hidden');
                 disableInputs(true);
             } else {
-                resultContent += `<p>ไม่เป็นเหตุการณ์ด้านความปลอดภัยภาคบังคับ สิ้นสุดการพิจารณา ให้ดำเนินการต่อไปตาม Difficulties <a href="#">แสดงข้อมูลเพิ่มเติม</a>. นอกจากนี้ ให้พิจารณาหากต้องดำเนินการแจ้งเปลี่ยนแปลงการให้บริการ</p>`;
+                resultContent += `<h2>สิ้นสุดการพิจารณา </h2> 
+				<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#">แสดงข้อมูลเพิ่มเติม</a> </p> <h3> นอกจากนี้ ให้พิจารณาหากต้องดำเนินการแจ้งเปลี่ยนแปลงการให้บริการ</h3>`;
                 sectionDivider.classList.remove('hidden');
                 disableInputs(false);
             }
