@@ -131,7 +131,7 @@
             <label><input type="checkbox" id="systemB" onchange="updateResult()" /> ข. ระบบ Navigation</label>
             <label><input type="checkbox" id="systemC" onchange="updateResult()" /> ค. ระบบ Surveillance</label>
             <label><input type="checkbox" id="systemD" onchange="updateResult()" /> ง. ระบบ Support&Facilities</label>
-            <label><input type="checkbox" id="bothAB" onchange="updateResult()" /> จ. ข้อ ง. และ ก./ข. หรือ ค.</label>
+            <label><input type="checkbox" id="bothAB" onchange="updateResult()" /> จ. ข้อ ง. และ ก.หรือ ข.หรือ ค.</label>
         </div>
         <div class="question hidden" id="question3">
             <h2>3. บริการที่ขัดข้องเป็นบริการระบบ CNS ซึ่ง</h2>
@@ -177,7 +177,7 @@
         const systemB = document.getElementById('systemB').checked ? 'ระบบ Navigation' : '';
         const systemC = document.getElementById('systemC').checked ? 'ระบบ Surveillance' : '';
         const systemD = document.getElementById('systemD').checked ? 'ระบบ Support&Facilities' : '';
-        const bothAB = document.getElementById('bothAB').checked ? 'Support&Facilities และระบบ C หรือ N หรือ S' : '';
+        const bothAB = document.getElementById('bothAB').checked ? 'ระบบ Support&Facilities และ C หรือ N หรือ S' : '';
 
         // Check if all required inputs are selected
         const isDateAndTimeFilled = date !== '' && time !== '';
