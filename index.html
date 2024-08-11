@@ -129,9 +129,9 @@
         </div>
         <div class="question">
             <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ</h2>
-            <label><input type="checkbox" id="systemA" onchange="handleCheckboxChange()" /> ก. ระบบ Communication หรือ Navigation หรือ Surveillance</label>
-            <label><input type="checkbox" id="systemB" onchange="handleCheckboxChange()" /> ข. ระบบ Support&Facilities</label>
-            <label><input type="checkbox" id="bothAB" onchange="handleCheckboxChange()" /> ค. ทั้ง 2 ข้อ</label>
+            <label><input type="checkbox" id="systemA" onchange="handleCheckboxChange(systemA)" /> ก. ระบบ Communication หรือ Navigation หรือ Surveillance</label>
+            <label><input type="checkbox" id="systemB" onchange="handleCheckboxChange(systemB)" /> ข. ระบบ Support&Facilities</label>
+            <label><input type="checkbox" id="bothAB" onchange="handleCheckboxChange(bothAB)" /> ค. ทั้ง 2 ข้อ</label>
 
         </div>
         <div class="question hidden" id="question3">
@@ -202,7 +202,7 @@
         const question3_3 = document.getElementById('question3-3');
         const sectionDivider = document.getElementById('section-divider');
 
-        if (document.getElementById('systemD').checked && !document.getElementById('systemA').checked && !document.getElementById('systemB').checked && !document.getElementById('systemC').checked) {
+        if (document.getElementById('systemB').checked) {
             resultContent += `<h2>สิ้นสุดการพิจารณา </h2>
 			<p>ไม่ใช่เหตุการณ์ด้านความปลอดภัยภาคบังคับ  ให้ดำเนินการต่อไปตาม Difficulties <a href="#" onclick="showMoreInfo(event)">แสดงข้อมูลเพิ่มเติม</a></p>`;
             question3.classList.add('hidden');
