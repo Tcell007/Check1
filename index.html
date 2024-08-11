@@ -128,12 +128,11 @@
             </div>
         </div>
         <div class="question">
-            <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ (เลือกได้มากกว่า 1 ข้อ)</h2>
-            <label><input type="checkbox" id="systemA" onchange="handleCheckboxChange()" /> ก. ระบบ Communication</label>
-            <label><input type="checkbox" id="systemB" onchange="handleCheckboxChange()" /> ข. ระบบ Navigation</label>
-            <label><input type="checkbox" id="systemC" onchange="handleCheckboxChange()" /> ค. ระบบ Surveillance</label>
-            <label><input type="checkbox" id="systemD" onchange="handleCheckboxChange()" /> ง. ระบบ Support&Facilities</label>
-            <label><input type="checkbox" id="bothAB" onchange="handleCheckboxChange()" /> จ. ข้อ ง. และ ก.หรือ ข.หรือ ค.</label>
+            <h2>2. เหตุการณ์ที่เกิดขึ้น <u>(อาจ)</u> ส่งผลกระทบต่อบริการ</h2>
+            <label><input type="checkbox" id="systemA" onchange="handleCheckboxChange()" /> ก. ระบบ Communication หรือ Navigation หรือ Surveillance</label>
+            <label><input type="checkbox" id="systemB" onchange="handleCheckboxChange()" /> ข. ระบบ Support&Facilities</label>
+            <label><input type="checkbox" id="bothAB" onchange="handleCheckboxChange()" /> ค. ทั้ง 2 ข้อ</label>
+
         </div>
         <div class="question hidden" id="question3">
             <h2>3. บริการที่ขัดข้องเป็นบริการระบบ CNS ซึ่ง</h2>
@@ -175,10 +174,8 @@
         // Get the values from the inputs
         const date = document.getElementById('date').value;
         const time = document.getElementById('time').value;
-        const systemA = document.getElementById('systemA').checked ? 'ระบบ Communication' : '';
-        const systemB = document.getElementById('systemB').checked ? 'ระบบ Navigation' : '';
-        const systemC = document.getElementById('systemC').checked ? 'ระบบ Surveillance' : '';
-        const systemD = document.getElementById('systemD').checked ? 'ระบบ Support&Facilities' : '';
+        const systemA = document.getElementById('systemA').checked ? 'ระบบ Communication หรือ Navigation หรือ Surveillance' : '';
+        const systemB = document.getElementById('systemB').checked ? 'ระบบ Support&Facilities' : '';
         const bothAB = document.getElementById('bothAB').checked ? 'ระบบ Support&Facilities และ C หรือ N หรือ S' : '';
 
         // Check if all required inputs are selected
@@ -197,7 +194,7 @@
         // Determine result content
         let resultContent = `
             <p>1. เหตุการณ์ เมื่อวันที่ : ${date}  เวลา : ${time}</p>
-            <p>2. เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: ${[systemA, systemB, systemC, systemD, bothAB].filter(Boolean).join(', ')}</p>
+            <p>2. เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: ${[systemA, systemB, bothAB].filter(Boolean).join(', ')}</p>
         `;
 
         const question3 = document.getElementById('question3');
@@ -319,32 +316,20 @@
         });
     }
 
-    function handleCheckboxChange() {
-        const bothABCheckbox = document.getElementById('bothAB');
-        const checkboxes = document.querySelectorAll('.tool input[type="checkbox"]:not(#bothAB)');
-        if (bothABCheckbox.checked) {
-            checkboxes.forEach(checkbox => {
+    function handleCheckboxChange(selectedId) {
+        const checkboxes = document.querySelectorAll('.tool input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            if (checkbox.id !== selectedId) {
                 checkbox.checked = false;
-                checkbox.disabled = true;
-                checkbox.parentElement.classList.add('disabled');
-            });
-        } else {
-            checkboxes.forEach(checkbox => {
-                checkbox.disabled = false;
-                checkbox.parentElement.classList.remove('disabled');
-            });
-        }
+            }
+        });
         updateResult();
     }
 	
 	function resetForm() {
         document.getElementById('date').value = '';
         document.getElementById('time').value = '';
-        document.getElementById('systemA').checked = false;
-        document.getElementById('systemB').checked = false;
-        document.getElementById('systemC').checked = false;
-        document.getElementById('systemD').checked = false;
-        document.getElementById('bothAB').checked = false;
+        document.querySelectorAll('.tool input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
         document.querySelectorAll('input[name="q3-1"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="q3-2"]').forEach(r => r.checked = false);
         document.querySelectorAll('input[name="q3-3"]').forEach(r => r.checked = false);
