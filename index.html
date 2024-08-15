@@ -207,7 +207,7 @@
         // Determine result content
         let resultContent = `
             <p>1. เหตุการณ์ เมื่อวันที่ : <b>${date}</b>  เวลา : <b>${time}</b></p>
-            <p>2. เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: ${[systemA, systemB, bothAB].filter(Boolean).join(', ')}</p>
+            <p>2. เหตุการณ์นี้ (อาจ) ส่งผลกระทบต่อบริการ: <b>${[systemA, systemB, bothAB].filter(Boolean).join(', ')}<b></p>
         `;
 
         const question3 = document.getElementById('question3');
